@@ -9,6 +9,6 @@ const db = async () => {
         console.log('DB Connection failed')
     }
 }
-
+ 
 // making db public, and desctructured it ? 
 module.exports = {db};
