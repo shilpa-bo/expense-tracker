@@ -11,8 +11,9 @@ import {Chart as ChartJs,
     ArcElement,
 } from 'chart.js'
 import styled from 'styled-components'
-
+import { dateFormat } from '../../utils/dateFormat'
 import {Line} from 'react-chartjs-2'
+import { useGlobalContext } from '../../context/globalContext'
 
 ChartJs.register(
     CategoryScale,
@@ -26,9 +27,45 @@ ChartJs.register(
 )
 
 export default function Chart() {
+const {incomes, expenses} = useGlobalContext()
+
+const data = {
+    labels: incomes.map((inc) => {
+        const {date} = inc
+        return dateFormat(date)
+    }),
+
+    datasets : [
+        {
+            label: 'Income',
+            data : [
+                ...incomes.map((income) => {
+                    const {amount} = income
+                    return amount
+                })
+            ],
+            backgroundColor: 'green',
+            tension: .2
+        },
+        {
+            label: 'Expenses',
+            data : [
+                ...expenses.map((expense) => {
+                    const {amount} = expense
+                    return amount
+                })
+            ],
+            backgroundColor: 'red',
+            tension: .2
+        }   
+
+    ]
+
+}
+
   return (
     <ChartStyled>
-        <Line/>
+        <Line data={data}/>
     </ChartStyled>
   )
 }
