@@ -9,6 +9,7 @@ This application, built with the MERN stack, allows users to add and manage expe
 git clone https://github.com/shilpa-bo/expense-tracker.git
 cd expense-tracker
 ```
+**Method 1**
 - Navigate to front end directory, install dependencies, start frontend application
 ```bash
 cd frontend
@@ -20,6 +21,12 @@ npm start
 cd backend
 npm install # Installs all dependencies listed in package.json
 nodemon app.js
+```
+**Method 2**
+- Make the setup script executable and run the script
+```bash
+chmod +x setup.sh
+./setup.sh
 ```
 
 ### Website Demo: 
