@@ -8,7 +8,7 @@ import Button from '../Button/Button'
 import { plus } from '../../utils/icons'
 
 export default function ExpenseForm() {
-    const {addExpense, getExpenses} = useGlobalContext()
+    const {addExpense} = useGlobalContext()
     const [inputState, setInputState] = useState({
         title: '',
         amount: '',
@@ -65,10 +65,11 @@ export default function ExpenseForm() {
         <div className="selects input-control">
                 <select required value={category} name="category" id="category" onChange={handleInput('category')}>
                     <option value=""  disabled >Select Option</option>
-                    <option value="salary">Salary</option>
-                    <option value="investments">Investments</option>
-                    <option value="stocks">Stocks</option>
-                    <option value="bank">Bank Transfer</option>  
+                    <option value="groceries">Groceries</option>
+                    <option value="education">Education</option>
+                    <option value="clothing">Shopping</option>
+                    <option value="travelling">Travelling</option>  
+                    <option value="subscriptions">Subscriptions</option>
                     <option value="other">Other</option>  
                 </select>
         </div>
