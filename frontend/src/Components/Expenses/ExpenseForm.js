@@ -84,7 +84,7 @@ export default function ExpenseForm() {
                 icon={plus}
                 bPad={'.8rem 1.6rem'}
                 bRad={'30px'}
-                bg={'var(--color-accent'}
+                bg={'#B33F62'}
                 color={'#fff'}
             />
         </div>

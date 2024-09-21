@@ -39,20 +39,40 @@ function App() {
   const orbMemo = useMemo(() => {
     return <Orb/>
   }, []);
-  return (
-      <AppStyled bg={bg} className="App">
+
+  //Conditional Layout Rendering based on the current path
+  const renderContent = () => {
+    if (location.pathname == '/signup'){
+      return (
+      <>
         {orbMemo}
         <MainLayout>
-          <Navigation active={active} setActive={setActive} />
-          <main>
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/incomes" element={<Incomes />} />
-              <Route path="/expenses" element={<Expenses />} />
-            </Routes>
-          </main>
+          <SignUp/>
         </MainLayout>
+      </>
+      )
+    } else{
+      return (
+        <>
+          {orbMemo}
+          <MainLayout>
+            <Navigation active={active} setActive={setActive} />
+            <main>
+              <Routes>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/incomes" element={<Incomes />} />
+                <Route path="/expenses" element={<Expenses />} />
+              </Routes>
+            </main>
+          </MainLayout>
+        </>
+      );
+    }
+  };
+  return (
+      <AppStyled bg={bg} className="App">
+        {renderContent()}        
       </AppStyled>
   );
 }

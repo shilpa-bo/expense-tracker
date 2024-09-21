@@ -2,9 +2,11 @@ import React from 'react'
 import styled from 'styled-components';
 import { InnerLayout } from '../../styles/Layouts';
 
-export default function Button({name, icon, onClick, bg, bPad, color, bRad}) {
+export default function Button({name, icon, onClick, bg, bPad, color, bRad, className=''}) {
   return (
-    <ButtonStyled style = {{
+    <ButtonStyled 
+    className={className}
+    style = {{
         background: bg,
         padding: bPad,
         borderRadius: bRad,
