@@ -1,11 +1,22 @@
-
 import React from 'react'
 import styled from 'styled-components';
 import avatar from '../../img/pfp.png'
 import { menuItems } from '../../utils/menuItems';
 import { signout } from '../../utils/icons';
+import { useNavigate} from "react-router-dom";
 
 export default function Navigation({active, setActive}) {
+//set active and use navigate to go to a path onClick
+// in app: Router and add routes to each page- to navigate to- attach them to each page 
+// on sign out- call the signout function and naviagate to sign in page!
+// create auth folder for all the sign in/ sign out busienss 
+// my only question is how to connect all this to the backend 
+//how do i connect the paths to this- the actual ID to have the active
+  const navigate = useNavigate();
+
+  function handleSignout() {
+    navigate('/signup')
+  }
 
   return (
     <NavStyled>
@@ -20,15 +31,17 @@ export default function Navigation({active, setActive}) {
             {menuItems.map((item) => {
               return <li 
               key = {item.id}
-              onClick={()=>setActive(item.id)}
+              onClick={()=>
+                navigate(item.link)}
               className={active===item.id?'active':''}
               >{item.icon}
               <span>{item.title}</span>
               </li>
             })}
+            
         </ul>
         <div className="bottom-nav">
-          <li>
+          <li className="sign-out" onClick={handleSignout}>
             {signout} Sign Out
           </li>
         </div>
