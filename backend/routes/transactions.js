@@ -1,15 +1,22 @@
+const express = require('express');
 const { addExpense, getExpenses, deleteExpense } = require('../controllers/expenses');
 const { addIncome, getIncomes, deleteIncome } = require('../controllers/income');
-const router = require('express').Router();
+const { addAccount, login } = require('../controllers/accounts');
 
+const router = express.Router();
 
-router.post('/add-income', addIncome)
-    .get('/get-incomes', getIncomes)
-    .delete('/delete-income/:id', deleteIncome)
-    .post('/add-expense',addExpense)
-    .get('/get-expenses', getExpenses)
-    .delete('/delete-expense/:id', deleteExpense)
+// Income Routes
+router.post('/add-income', addIncome);
+router.get('/get-incomes', getIncomes);
+router.delete('/delete-income/:id', deleteIncome);
 
+// Expense Routes
+router.post('/add-expense', addExpense);
+router.get('/get-expenses', getExpenses);
+router.delete('/delete-expense/:id', deleteExpense);
 
+// Account Routes
+router.post('/register', addAccount);
+router.post('/login', login);
 
-module.exports = router
+module.exports = router;

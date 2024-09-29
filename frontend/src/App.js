@@ -8,7 +8,8 @@ import React, { useEffect, useMemo, useState } from "react";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import Incomes from "./Components/Incomes/Incomes";
 import Expenses from "./Components/Expenses/Expenses";
-import SignUp from './Components/SignUp/SignUp';
+import SignUp from './Components/Auth/SignUp';
+import Login from './Components/Auth/Login'
 import { useLocation } from 'react-router-dom';
 
 // what router ?? 
@@ -42,7 +43,7 @@ function App() {
 
   //Conditional Layout Rendering based on the current path
   const renderContent = () => {
-    if (location.pathname == '/signup'){
+    if (location.pathname === '/signup'){
       return (
       <>
         {orbMemo}
@@ -51,7 +52,18 @@ function App() {
         </MainLayout>
       </>
       )
-    } else{
+    } else if (location.pathname === '/login'){
+      return (
+        <>
+        {orbMemo}
+        <MainLayout>
+          <Login></Login>
+        </MainLayout>
+        </>
+      )
+    }
+    
+    else{
       return (
         <>
           {orbMemo}

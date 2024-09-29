@@ -7,10 +7,10 @@ exports.addExpense = async (req, res) => {
     if (!title || !category || !description || !date) {
         return res.status(400).json({ message: 'All fields are required!' });
     }
-    if (amount <= 0 || !amount ||!Number.isInteger(amount)) {
+    if (typeof amount !== 'number' || amount <= 0) {
         return res.status(400).json({ message: 'Amount must be a positive number.' });
-    }
-
+      }
+      
     // Creating a new instance of ExpenseModel using our ExpenseModel
     const expense = new ExpenseSchema({
         title,

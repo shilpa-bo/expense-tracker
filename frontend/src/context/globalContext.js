@@ -11,6 +11,19 @@ export const GlobalProvider = ({children}) => {
     const [error, setError] = useState([])
     //calculate incomes 
 
+
+    // Add a Loading State
+    const addUser = async (user) => {
+        console.log("Adding user");
+        try {
+            const response = await axios.post(`${BASE_URL}register`, user);
+            // You might want to handle successful registration here
+            console.log("User registered successfully", response.data);
+        } catch (err) {
+            setError(err.response ? err.response.data.message : "An error occurred while adding user");
+        }
+    };
+    
     const addIncome = async (income) => {
         console.log("Adding income")
         const response = await axios.post(`${BASE_URL}add-income`, income)
@@ -94,7 +107,8 @@ export const GlobalProvider = ({children}) => {
             totalBalance,
             transactionHistory,
             error,
-            setError
+            setError,
+            addUser
         }}>
             {children}
         </GlobalContext.Provider>

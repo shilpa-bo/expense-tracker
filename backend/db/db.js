@@ -1,14 +1,14 @@
+require('dotenv').config()
 const mongoose = require('mongoose')
-
+const MONGO_URI = process.env.MONGO_URI
 const db = async () => {
     try{
         mongoose.set('strictQuery', false)
-        await mongoose.connect(process.env.MONGO_URL)
-        console.log('DB Connected')
+        await mongoose.connect(MONGO_URI);
+                  console.log('DB Connected')
     } catch (error) {
-        console.log('DB Connection failed')
-    }
+        console.log('DB Connection failed', error)
+    } 
 }
  
-// making db public, and desctructured it ? 
 module.exports = {db};
