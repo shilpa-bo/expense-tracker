@@ -28,22 +28,25 @@ export default function Signup() {
   
   // Handle form submission
   const handleSubmit = async (e) => {
-      e.preventDefault();
-      try {
-          // Pass `inputState` as the parameter to `addUser`
-          await addUser(inputState);
-          // After successful submission, reset the form
-          setInputState({
-              name: '',
-              email: '',
-              password: '',
-          });
-          navigate('/');
-      } catch (error) {
-          console.error("Error adding user:", error);
-          // Handle error if necessary, e.g., showing an error message to the user
-      }
-  };
+    e.preventDefault();
+    const user = {
+        name: inputState.name, // Replace `inputState.name` with actual form state for the name
+        email: inputState.email, // Replace `inputState.email` with actual form state for the email
+        password: inputState.password // Replace `inputState.password` with actual form state for the password
+    };
+    console.log("Submitting user:", user);
+    try {
+        await addUser(user);
+        setInputState({
+            name: '',
+            email: '',
+            password: '',
+        });
+        navigate('/');
+    } catch (error) {
+        console.error("Error during registration:", error);
+    }
+};
   
   return (
   // JSX for rendering the form
